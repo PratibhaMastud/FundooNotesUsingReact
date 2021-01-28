@@ -1,0 +1,20 @@
+.login-form {
+  justify-content: center;
+  min-height: 100vh;
+}
+.button-block {
+  width: 30%;
+  right: 0px;
+}
+.login-background {
+  justify-content: center;
+  min-height: 30vh;
+  padding: 50px;
+}
+.link {
+  text-align: left;
+  margin-right: 50px;
+}
+.text {
+  text-decoration-color: blueviolet;
+}

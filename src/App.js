@@ -7,6 +7,10 @@ import {
 import React from 'react';
 import Sign from './Component/SignIn';
 import ForgotPage from './Component/Forgot';
+import CreatePage from './Component/Account';
+import Drawer from './Component/SimpleDrawer';
+//import Create from './Component/NewAcc';
+
 
 
 function App() {
@@ -16,8 +20,10 @@ function App() {
         <Switch>
           <Route path="/Sign" exact component = {Sign}/>
           <Route path="/Forgot" exact component = {ForgotPage}/>
+          <Route path="/CreateAcc" exact component = {CreatePage}/>
         </Switch>
       </Router>
+      <Drawer/>
     </div>
   );
 }

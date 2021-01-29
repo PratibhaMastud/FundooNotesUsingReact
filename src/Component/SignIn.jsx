@@ -2,16 +2,42 @@ import React from "react";
 import { Button, TextField, Grid, Paper, Typography, Link} from "@material-ui/core";
 import './SignIn.css';
 import { withRouter } from 'react-router-dom';
-//import axios from 'axios';
+import axios from 'axios';
 
 
 class SignIn extends React.Component {
     constructor(props){
       super(props);
       this.state={
-        userName:'',
+        email:'',
         password:''
       }
+    }
+    
+    changeHandlerUserName = (e) => {
+      this.setState({ 
+        email: e.target.value
+       })
+      this.state.email = e.target.value;
+    };
+
+    changeHandlerPassword = (e) => {
+      this.setState({ password: e.target.value })
+      this.state.password = e.target.value;
+    };
+
+    handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(this.state);
+      let userData = {
+        "email": this.state.email,
+        "password": this.state.password
+      }
+      axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login",userData)
+      .then(response => {
+        console.log(response);
+        console.log(response.data);
+      })
     }
 
   render() {
@@ -44,10 +70,12 @@ class SignIn extends React.Component {
         <TextField
           type="email"
           id="outlined-basic"
-          label="Username"
-          variant="outlined"   
+          label="UserName"
+          variant="outlined" 
           required
           autoFocus
+          value={this.state.email}
+          onChange={this.changeHandlerUserName}
         />
       </Grid>
     <Grid item>
@@ -55,9 +83,11 @@ class SignIn extends React.Component {
         type="password"
         id="outlined-basic"
         label="Password"
-        variant="outlined"    
+        variant="outlined"
         required
         autoFocus 
+        value={this.state.password}
+        onChange={this.changeHandlerPassword}
       />
     </Grid>
     <Grid item className="link">

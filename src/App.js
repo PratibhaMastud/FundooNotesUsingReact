@@ -9,7 +9,8 @@ import Sign from './Pages/Login/SignIn';
 import ForgotPage from './Pages/Forget/Forgot';
 import CreatePage from './Pages/Register/Account';
 import Drawer from './Components/SimpleDrawer';
-//import Create from './Component/NewAcc';
+import Board from './Components/Dashboard';
+import Note from './Components/CreateNote';
 
 
 
@@ -21,9 +22,10 @@ function App() {
           <Route path="/Sign" exact component = {Sign}/>
           <Route path="/Forgot" exact component = {ForgotPage}/>
           <Route path="/CreateAcc" exact component = {CreatePage}/>
+          <Route path="/Note" exact component = {Note}/>
+          <Route path="/Dashboard" exact component = {Board}/>
         </Switch>
       </Router>
-      <Drawer/>
     </div>
   );
 }

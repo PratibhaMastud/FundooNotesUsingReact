@@ -23,6 +23,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -34,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     },
    drawer: {
        width:250,
-   }
+   },
+   
   }));
 
 const SimpleDrawer = () => {
@@ -43,7 +47,8 @@ const SimpleDrawer = () => {
     return (
         <div>
           <CssBaseline />
-          <Drawer open={open} onClose={() => setOpen(false)}>
+          <Drawer open={open} onClose={() => setOpen(false)} >
+            <Toolbar/>
             <List disablePadding className={classes.drawer}>
             <ListItem button>
                 <ListItemText primary="First Item" />
@@ -53,7 +58,7 @@ const SimpleDrawer = () => {
             </ListItem>
         </List>
           </Drawer>
-          <AppBar position="static" color="white">
+          <AppBar position="fixed" color="secondary" className={classes.appBar}>
             <Toolbar>
               <IconButton
                 edge="start"
@@ -63,8 +68,8 @@ const SimpleDrawer = () => {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                Fundoo
+              <Typography variant="h6" className={classes.title} >
+                fundooNotes
               </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

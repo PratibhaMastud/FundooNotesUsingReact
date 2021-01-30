@@ -5,10 +5,10 @@ import {
   Switch,
 } from 'react-router-dom';
 import React from 'react';
-import Sign from './Component/SignIn';
-import ForgotPage from './Component/Forgot';
-import CreatePage from './Component/Account';
-import Drawer from './Component/SimpleDrawer';
+import Sign from './Pages/Login/SignIn';
+import ForgotPage from './Pages/Forget/Forgot';
+import CreatePage from './Pages/Register/Account';
+import Drawer from './Components/SimpleDrawer';
 //import Create from './Component/NewAcc';
 
 

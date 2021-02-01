@@ -10,46 +10,30 @@ import {
   List,
   ListItem,
   ListItemText,
-  Badge,
   InputBase,
   CssBaseline,
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import ViewStreamIcon from '@material-ui/icons/ViewStream';
+import SettingsIcon from '@material-ui/icons/Settings';
+import AppsIcon from '@material-ui/icons/Apps';
+import Avatar from '@material-ui/core/Avatar';
+import './Drawer.css';
+import { withRouter } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      marginRight: "auto",
-    },
-    content: {
-      padding: theme.spacing(0),
-    },
-   drawer: {
-       width:250,
-   },
-   
-  }));
+
 
 const SimpleDrawer = () => {
-    const classes = useStyles();
     const [open, setOpen] =useState(false);
     return (
         <div>
           <CssBaseline />
           <Drawer open={open} onClose={() => setOpen(false)} >
             <Toolbar/>
-            <List disablePadding className={classes.drawer}>
+            <List disablePadding className="drawer">
             <ListItem button>
                 <ListItemText primary="First Item" />
             </ListItem>
@@ -58,38 +42,46 @@ const SimpleDrawer = () => {
             </ListItem>
         </List>
           </Drawer>
-          <AppBar position="fixed" color="secondary" className={classes.appBar}>
+          <div className="Navbar">
+          <AppBar position="fixed" color="secondary">
             <Toolbar>
               <IconButton
                 edge="start"
-                className={classes.menuButton}
+                className="menuButton"
                 color="inherit"
                 onClick={() => setOpen(true)}
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" className={classes.title} >
+              <Typography variant="h5" className="title">
                 fundooNotes
               </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <div className="search">
+              <div className="searchIcon">
               <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+              <InputBase placeholder="Search.." className="inputSearch" />
+              </div>
           </div>
-         
-
+          <div className="refresh">
+            <RefreshIcon />
+          </div>
+          <div className="list">
+          <ViewStreamIcon />
+          </div>
+          <div className="setting">
+            <SettingsIcon />
+          </div>
+          <div className="app">
+          <AppsIcon />
+          </div>
+          <div className="setting">
+            <Avatar />
+          </div>
             </Toolbar>
           </AppBar>
+        </div>
         </div>
       );
     };
     
-export default SimpleDrawer;
+export default withRouter(SimpleDrawer);

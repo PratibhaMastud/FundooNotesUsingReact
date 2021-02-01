@@ -1,0 +1,72 @@
+.drawer {
+  width: 200px;
+}
+.title {
+  margin-right: auto;
+  font-size: larger;
+}
+.search {
+  margin-top: 2px;
+  margin-left: 150px;
+  width: 50%;
+  background-color: whitesmoke;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.searchIcon {
+  color: black;
+  margin-right: 400px;
+  margin-top: 8px;
+}
+.inputSearch {
+  margin-left: 10px;
+}
+.refresh {
+  margin-left: 100px;
+}
+.list {
+  margin-left: 20px;
+}
+.setting {
+  margin-left: 20px;
+}
+.app {
+  margin-left: 55px;
+}
+.plus {
+  font-size: 45px !important;
+  font-weight: 900;
+  color: #f4b400;
+  cursor: pointer;
+  z-index: 222;
+  background: transparent;
+}
+.note {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 200px;
+  margin: 16px;
+  float: left;
+}
+.note .btn {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  color: #f4b400;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 3px 3px 15px -10px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+.deleteIcon {
+  width: 0.7em;
+  height: 0.7em;
+}

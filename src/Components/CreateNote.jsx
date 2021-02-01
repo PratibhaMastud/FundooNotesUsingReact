@@ -28,26 +28,37 @@ const CreateNote = (props) => {
 
     const addEvent = () => {
         props.passNote(note);
+        setNote({
+            title: "",
+            content: "",
+        })
     };
+
 
     return(
         <>
             <div className="mainnote">
                 <form>
-                    <input type="text"
-                     name="title"
-                     value={note.title} 
-                     onChange={InputEvent}
-                      placeholder="Title"/>
+           
+                <input type="text"
+                    name="title"
+                    value={note.title} 
+                    onChange={InputEvent}
+                    placeholder="Title"
+                    /> 
+
                     <textarea rows=""
                      name="content"
                      value={note.content} 
                      onChange={InputEvent} 
                      column="" 
                      placeholder="Take a Note..." />
-                    <Button onClick={addEvent}>
-                        <AddIcon className="plus"/>
-                    </Button>
+                    
+                   
+                        <Button onClick={addEvent}>
+                            <AddIcon className="plus"/>
+                        </Button> 
+                    
                 </form>
             </div>
         </>

@@ -4,7 +4,6 @@ import CreateNote from './CreateNote';
 import Note from './Note';
 import { withRouter } from 'react-router-dom';
 
-
 const Dashboard = () => {
     const [ addItem, setAddItem ] = useState([]);
     const addNote = (note) => {
@@ -13,12 +12,23 @@ const Dashboard = () => {
       });
       console.log(note);
     };
+
     return(
         <>
             <AppBar />
             <CreateNote passNote={addNote}/>
-            <Note />
-            
+
+            {addItem.map((value,index) => {
+                return (
+                    <Note
+                        key={index}
+                        id={index}
+                        title={value.title}
+                        content={value.content}
+                    />  
+                );
+            })
+        }
         </>
     );
 };

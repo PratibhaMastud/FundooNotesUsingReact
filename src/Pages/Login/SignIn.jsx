@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField, Grid, Paper, Typography, Link} from "@material-ui/core";
-import './SignIn.css';
+import './Login.css';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
@@ -42,8 +42,9 @@ class SignIn extends React.Component {
 
   render() {
     return (
+  <Grid container spacing={0} justify="center" display="flex" direction="row">
+    <form onSubmit={this.handleSubmit}>
     <div>
-    <Grid container spacing={0} justify="center" direction="row">
       <Grid item>
         <Grid container direction="column"  justify="center" spacing={2} className="login-form">
         <Paper variant="elevation" elevation={2} className="login-background">
@@ -64,7 +65,6 @@ class SignIn extends React.Component {
         </Grid>
     <Grid item>
         <br></br>
-    <form onSubmit={this.handleSubmit}>
     <Grid container direction="column" spacing={2}>
       <Grid item>
         <TextField
@@ -112,13 +112,13 @@ class SignIn extends React.Component {
     </Button>
     </Grid>
     </Grid>
-    </form>
     </Grid>
     </Paper>
     </Grid>
     </Grid>
-    </Grid>
     </div>
+    </form>
+    </Grid>
     );
     }
     }

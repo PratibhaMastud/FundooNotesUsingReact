@@ -4,14 +4,15 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import React ,{ useState } from 'react';
+import React  from 'react';
 import Sign from './Pages/Login/SignIn';
+import Login from './Pages/Login/Login';
 import ForgotPage from './Pages/Forget/Forgot';
 import CreatePage from './Pages/Register/Account';
-import Drawer from './Components/SimpleDrawer';
-import Board from './Components/Dashboard';
-import Note from './Components/Note';
-import CreateNote from './Components/CreateNote';
+import Drawer from './Components/DrawerFiles/SimpleDrawer';
+import Board from './Components/Home/Dashboard.jsx';
+import Note from './Components/NoteFiles/Note';
+import CreateNote from './Components/NoteFiles/CreateNote';
 
 
 
@@ -22,6 +23,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/Sign" exact component = {Sign}/>
+          <Route path="/Login" exact component = {Login}/>
           <Route path="/Forgot" exact component = {ForgotPage}/>
           <Route path="/CreateAcc" exact component = {CreatePage}/>
           <Route path="/Note" exact component = {Note}/>

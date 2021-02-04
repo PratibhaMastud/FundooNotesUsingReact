@@ -1,0 +1,54 @@
+/* #main-div {
+  width: 668px;
+  height: 513px;
+  border: 1px solid #d6d7da;
+  padding: 48px 40px 40px 36px;
+  border-radius: 5px;
+  font-family: arial, sans-serif;
+  line-height: 16px;
+  font-size: 14px;
+  background: #ffffff;
+  margin: 100px auto;
+ 
+} */
+.logo {
+  padding: 30px 10px 30px 0px;
+  display: flex;
+}
+.trypto {
+  padding: 0px 35px 0px 35px;
+  display: flex;
+  color: #202124;
+
+  font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3333;
+}
+.text {
+  padding: 0px 25px 0px 25px;
+  display: flex;
+}
+.text-field {
+  padding: 20px 15px 0px 15px;
+  display: flex;
+}
+.link-button {
+  position: absolute;
+  padding: 75px 25px 0px 35px;
+}
+.main {
+  width: 100%;
+}
+.register-form {
+  width: 550px;
+  height: 500px;
+  border: 1px solid #d6d7da;
+  padding: 0px 15px 15px 15px;
+  border-radius: 5px;
+  font-family: arial, sans-serif;
+  line-height: 16px;
+  font-size: 14px;
+  background: #ffffff;
+  margin: 100px auto;
+}

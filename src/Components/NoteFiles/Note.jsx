@@ -4,11 +4,9 @@ import { withRouter } from 'react-router-dom';
 import './Dashboard.css';
 
 const Note = (props) => {
-
     const deleteNote = () => {
         props.deleteItem(props.id);
     }
-    
     return(
         <>
             <div className="note">
@@ -17,7 +15,7 @@ const Note = (props) => {
                 <p>{props.content}</p>
                 <button className="btn" onClick={deleteNote}>
                 <DeleteOutlineIcon className="deleteIcon"/>
-                </button>
+                </button>             
 
             </div>
         </>

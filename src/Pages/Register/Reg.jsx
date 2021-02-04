@@ -1,31 +1,32 @@
 import React from "react";
 import { Typography, Link, Button } from "@material-ui/core";
-//import { makeStyles } from '@material-ui/core/styles';
-//import { connect } from 'react-redux';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
-import './Login.css';
+import './Register.css';
 import { withRouter } from 'react-router-dom';
-//import axios from 'axios';
+import Logo from '../../Accets/funlogo.png';
 
-//const useStyles = makeStyles((theme) => ({
+
     const styles = theme => ({  
     root: {
       display: 'flex',
       flexWrap: 'wrap',
     },
+    
     textField: {
-      marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(6),
+      marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: '50ch',
+      width: '30ch',
       marginTop: theme.spacing(2),
-      height:'10ch',
+      height: '5ch'
     },
     textFieldsec: {
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(1),
-        width: '50ch',
-        height:'10ch',
+        width: '62ch',
+        height:'5ch',
+        
       },
       linkPass: {
           textAlign: "left",
@@ -38,13 +39,15 @@ import { withRouter } from 'react-router-dom';
         marginTop: theme.spacing(5),
         marginRight: theme.spacing(1),
         fontWeight: "bold",
+        width: '30ch',
+        height: '5ch'
       },
       loginBtn: {
-        marginLeft: theme.spacing(22),
+       marginLeft: theme.spacing(20),
         },
   });
 
-  class Login extends React.Component {
+  class Reg extends React.Component {
 
     constructor() {
         super();
@@ -118,56 +121,82 @@ import { withRouter } from 'react-router-dom';
     render() {
     const { classes } = this.props;
     return (
-        <div>
-        <form  onSubmit={this.submitLoginForm}>
-        <div id="register">
-            <div id="logo">
-                <h3>Fundoo</h3>
+        <div >
+        <form onSubmit={this.submitLoginForm} >
+        <div className="register-form">
+            <div className="logo">
+                <img src={Logo} alt="boohoo" className="img-responsive"/>
             </div>
-            <div id="sign">
-                <Typography variant="h6" >
-                    SignIn
+            <div className="trypto">
+                <Typography variant="h7">
+                    Create your Fundoo Account
                 </Typography>
             </div>
-            <div id="head">
-                <Typography variant="h7" >
-                    Use Your Fundoo account
-                </Typography>
-            </div>
-            
-            <div className={classes.root}>
+            <div className="text">
             <TextField
-            label="Username"
-            id="outlined-basic"
-            className={classes.textField}
+            label="Firstname"
+            id="outlined-size-small"
             variant="outlined"
+            name="firstName"
+            size="small"
+            value={this.state.fields.firstName}
+            onChange={this.handleChange}
+            className={classes.textField}
+            />
+    
+            <TextField
+            label="Lastname"
+            id="outlined-size-small"
+            variant="outlined"
+            name="lastName"
+            size="small"
+            value={this.state.fields.lastName}
+            onChange={this.handleChange}
+            className={classes.textField}
+            />
+            </div>
+            <div className="text-field">
+            <TextField
+            type="username"
+            label="Username"
+            id="outlined-size-small"
+            variant="outlined"
+            size="small"
             name="email"
             value={this.state.fields.email}
             onChange={this.handleChange}
-            helperText={this.state.errors.email}
-            error={this.state.errors?.email.length > 0}
+            className={classes.textFieldsec}
             />
             </div>
-            <div className={classes.root}>
+            <div className="text">
             <TextField
+            type="password"
             label="Password"
-            id="outlined-basic"
-            className={classes.textFieldsec}
+            id="outlined-size-small"
             variant="outlined"
+            size="small"
             name="password"
             value={this.state.fields.password}
             onChange={this.handleChange}
+            className={classes.textField}
             />
-            </div>
-            <div className={classes.linkPass}>
-            <Link variant="body2">
-                Forgot Password?
+            <TextField
+            type="password"
+            label="Confirm"
+            id="outlined-size-small"
+            variant="outlined"
+            size="small"
+            name="confirmPassword"
+            value={this.state.fields.confirmPassword}
+            onChange={this.handleChange}
+            className={classes.textField}
+            />
+            </div> 
+            <div className="link-button">
+            <Link variant="body2" className={classes.linkButton}>
+                Sign in instead..
             </Link>
-            </div>
-            <div className={classes.linkButton}>
-            <Link variant="body2">
-                Create New account...
-            </Link>
+            
             <Button
             variant="contained"
             size="medium"
@@ -175,17 +204,15 @@ import { withRouter } from 'react-router-dom';
             type="submit"
             className={classes.loginBtn}
             >
-            Login
+            Next
             </Button>
             </div>
-       </div>
-       </form>
-    </div>
-    
+            
+        </div>    
+     </form>
+     </div>
     );
     }
 }
-//export default withRouter((withStyles(Login)));
-//export default connect()(withRouter(Login))(withStyles(styles)(Login));
-export default withRouter(withStyles(styles)(Login));
+export default withRouter(withStyles(styles)(Reg));
 //this export connects the component to the reduxStore as well as allowing us to use the history props

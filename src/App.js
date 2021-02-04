@@ -13,8 +13,7 @@ import Drawer from './Components/DrawerFiles/SimpleDrawer';
 import Board from './Components/Home/Dashboard.jsx';
 import Note from './Components/NoteFiles/Note';
 import CreateNote from './Components/NoteFiles/CreateNote';
-
-
+import Reg from './Pages/Register/Reg';
 
 const App = () => {
   
@@ -30,6 +29,8 @@ const App = () => {
           <Route path="/Drawer" exact component = {Drawer}/>
           <Route path="/Dashboard" exact component = {Board}/>
           <Route path="/CreateNote" exact component = {CreateNote} />
+          <Route path="/Reg" exact component = {Reg}/>
+
         </Switch>
       </Router>
     </div>

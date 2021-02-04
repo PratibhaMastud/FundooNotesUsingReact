@@ -14,7 +14,7 @@ import Logo from '../../Accets/funlogo.png';
     },
     
     textField: {
-        marginTop: theme.spacing(6),
+        marginTop: theme.spacing(5),
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       width: '30ch',
@@ -22,6 +22,7 @@ import Logo from '../../Accets/funlogo.png';
       height: '5ch'
     },
     textFieldsec: {
+        marginTop: theme.spacing(1),
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(1),
         width: '62ch',
@@ -52,9 +53,8 @@ import Logo from '../../Accets/funlogo.png';
     constructor() {
         super();
         this.state = {
-
             fields: {},
-            errors: {email:'' ,password:''}
+            errors: {}
         }
       this.handleChange = this.handleChange.bind(this);
       this.submitLoginForm = this.submitLoginForm.bind(this);
@@ -74,13 +74,39 @@ import Logo from '../../Accets/funlogo.png';
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
+        
+        if (!fields["firstName"]) {
+            formIsValid = false;
+            errors["firstName"] = "*Please enter your First Name.";
+          }
+    
+          if (typeof fields["firstName"] !== "undefined") {
+            if (!fields["firstName"].match(/^[a-zA-Z ]*$/)) {
+              formIsValid = false;
+              errors["firstName"] = "*Please enter alphabet characters only.";
+            }
+          }
+          
+          if (!fields["lastName"]) {
+            formIsValid = false;
+            errors["lastName"] = "*Please enter your Last Name.";
+          }
+    
+          if (typeof fields["lastName"] !== "undefined") {
+            if (!fields["lastName"].match(/^[a-zA-Z ]{3,}/)) {
+              formIsValid = false;
+              errors["lastName"] = "*Please enter alphabet characters only.";
+            }
+          }
+    
 
-        if (!fields["email"]) {
+          if (!fields["email"]) {
             formIsValid = false;
             errors["email"] = "*Please enter your email-ID.";
-        }
-        
-        if (typeof fields["email"] !== "undefined") {
+          }
+    
+          if (typeof fields["email"] !== "undefined") {
+            //regular expression for email validation
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
             if (!pattern.test(fields["email"])) {
               formIsValid = false;
@@ -88,18 +114,30 @@ import Logo from '../../Accets/funlogo.png';
             }
           }
 
-        if (!fields["password"]){
+          if (!fields["password"]) {
             formIsValid = false;
             errors["password"] = "*Please enter your password.";
-        }
-
-        if (typeof fields["password"] !== "undefined"){
-            if(!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)){
-                formIsValid = false;
-                errors["password"] = "* Please enter secure password."
+          }
+    
+          if (typeof fields["password"] !== "undefined") {
+            if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+              formIsValid = false;
+              errors["password"] = "*Please enter secure and strong password.";
             }
-        }
+          }
 
+          if (!fields["confirmPassword"]) {
+            formIsValid = false;
+            errors["confirmPassword"] = "*Please enter your Confirm Password.";
+          }
+    
+          if (typeof fields["confirmPassword"] !== "undefined") {
+            if (!fields["confirmPassword"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+              formIsValid = false;
+              errors["confirmPassword"] = "*Please enter secure and strong password.";
+            }
+          }
+    
         this.setState({
             errors: errors
         });
@@ -134,7 +172,7 @@ import Logo from '../../Accets/funlogo.png';
             </div>
             <div className="text">
             <TextField
-            label="Firstname"
+            label="firstName"
             id="outlined-size-small"
             variant="outlined"
             name="firstName"
@@ -142,8 +180,9 @@ import Logo from '../../Accets/funlogo.png';
             value={this.state.fields.firstName}
             onChange={this.handleChange}
             className={classes.textField}
+            helperText={this.state.errors.firstName}
+            error={this.state.errors.firstName}
             />
-    
             <TextField
             label="Lastname"
             id="outlined-size-small"
@@ -153,6 +192,8 @@ import Logo from '../../Accets/funlogo.png';
             value={this.state.fields.lastName}
             onChange={this.handleChange}
             className={classes.textField}
+            helperText={this.state.errors.lastName}
+            error={this.state.errors.lastName}
             />
             </div>
             <div className="text-field">
@@ -166,7 +207,10 @@ import Logo from '../../Accets/funlogo.png';
             value={this.state.fields.email}
             onChange={this.handleChange}
             className={classes.textFieldsec}
+            helperText={this.state.errors.email}
+            error={this.state.errors.email}
             />
+           {/* <span style={{color: "red"}}>{this.state.errors["email"]}</span> */}
             </div>
             <div className="text">
             <TextField
@@ -179,6 +223,8 @@ import Logo from '../../Accets/funlogo.png';
             value={this.state.fields.password}
             onChange={this.handleChange}
             className={classes.textField}
+            helperText={this.state.errors.password}
+            error={this.state.errors.password}
             />
             <TextField
             type="password"
@@ -190,22 +236,28 @@ import Logo from '../../Accets/funlogo.png';
             value={this.state.fields.confirmPassword}
             onChange={this.handleChange}
             className={classes.textField}
+            helperText={this.state.errors.confirmPassword}
+            error={this.state.errors.confirmPassword}
             />
-            </div> 
-            <div className="link-button">
-            <Link variant="body2" className={classes.linkButton}>
+            </div>
+           
+            <div className="butt">
+                <div className="btn2">
+                <Link variant="body2" className={classes.linkButton}>
                 Sign in instead..
-            </Link>
-            
+                </Link>
+                </div>
+            <div className="btn3">
             <Button
             variant="contained"
-            size="medium"
             color="primary"
+            size="medium"
             type="submit"
             className={classes.loginBtn}
             >
-            Next
+            next
             </Button>
+            </div>
             </div>
             
         </div>    

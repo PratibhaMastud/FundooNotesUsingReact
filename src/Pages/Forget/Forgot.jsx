@@ -1,96 +1,150 @@
 import React from "react";
-import { Button, TextField, Grid, Paper, Typography, Link} from "@material-ui/core";
-import './SignIn.css';
+import { Typography, Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from '@material-ui/core/TextField';
+import './Forgot.css';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
+import Logoo from '../../Accets/funlogo.png';
 
+    const styles = theme => ({  
+    roott: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textFields: {
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(1),
+        width: '50ch',
+        marginTop: theme.spacing(2),
+        height:'10ch',
+      },
+      linkButtonn: {
+        textAlign: "left",
+        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(5),
+        marginRight: theme.spacing(1),
+        fontWeight: "bold",
+      },
+      loginBtnn: {
+        marginLeft: theme.spacing(22),
+        },
+  });
 
-class Forgot extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      email:''
-    }
-  }
+  class Login extends React.Component {
 
-  changeHandlerEmail = (e) => {
-    this.setState({ userName: e.target.value })
-    this.state.email = e.target.value;
-  };
+    constructor() {
+        super();
+        this.state = {
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.state);
-    let userData = {
-      "email":this.state.email
-    }
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset",userData)
-    .then(response => {
-      console.log(response);
-      console.log(response.data);
-    })
-  }
-
-  render() {
-    return (
-    <div>
-  <Grid container spacing={0} justify="center" direction="row">      
-      <Grid item>
-        <Grid container direction="column"  justify="center" spacing={2} className="login-form">
-        <Paper variant="elevation" elevation={2} className="login-background">
-        <Grid item>
-          <Typography component="h1" variant="h7" className="text">
-            Fundoo
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography component="h5" variant="h6" spacing={2}>
-           Account recovery
-          </Typography>
-        </Grid>
-    <Grid item>
-        <br></br>
-    <form onSubmit={this.handleSubmit}>
-    <Grid container direction="column" spacing={2}>
-    <Grid item>
-    <TextField
-    type="email"
-    id="outlined-basic"
-    label="Username"
-    variant="outlined"    
-    required
-    autoFocus
-    name="userName"      
-    value={this.state.userName}
-    onChange={this.changeHandlerEmail}
-    />
-    </Grid>
-    <Grid item className="link">
-    <Link href="#" variant="body2">
-    Cancel
-    </Link>
-    </Grid>
-    <Grid item >
-    <Button
-    variant="contained"
-    size="small"
-    color="secondary"
-    type="submit"
-    className="button-block"
-    >
-    Submit
-    </Button>
-    </Grid>
-    </Grid>
-    </form>
-    </Grid>
-    </Paper>
-    </Grid>
-    </Grid>
-    </Grid>
+            fields: {},
+            errors: {email:'' ,password:''}
+        }
+      this.handleChange = this.handleChange.bind(this);
+      this.submitLoginForm = this.submitLoginForm.bind(this);
   
+    };
+
+    handleChange(e){
+        let fields = this.state.fields;
+        fields[e.target.name] = e.target.value;
+        this.setState({
+            fields
+        });
+    }
+
+
+    validationForm = () => {
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        if (!fields["email"]) {
+            formIsValid = false;
+            errors["email"] = "*Please enter your email-ID.";
+        }
+        
+        if (typeof fields["email"] !== "undefined") {
+            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            if (!pattern.test(fields["email"])) {
+              formIsValid = false;
+              errors["email"] = "*Please enter valid email-ID.";
+            }
+          }
+
+        this.setState({
+            errors: errors
+        });
+        return formIsValid;
+    }
+
+    submitLoginForm = (e) => {
+        e.preventDefault();
+        if (this.validationForm()) {
+            let fields = {};
+            fields["email"] = "";
+            fields["password"] = "";
+            this.setState({fields:fields});
+            alert("Form submitted");
+        }
+  
+    }
+
+    render() {
+    const { classes } = this.props;
+    return (
+        <div>
+        <form  onSubmit={this.submitLoginForm}>
+        <div id="forgot">
+            <div id="forgot-logo">
+            <img src={Logoo} alt="booh" className="img"/>
+            </div>
+            <div id="signin">
+                <Typography variant="h6" >
+                    Find Your email
+                </Typography>
+            </div>
+            <div id="heading">
+                <Typography variant="h7" >
+                    Enter your phone number or recovery email
+                </Typography>
+            </div>
+            
+            <div className={classes.roott}>
+            <TextField
+            label="Username"
+            id="outlined-basic"
+            className={classes.textFields}
+            variant="outlined"
+            name="email"
+            value={this.state.fields.email}
+            onChange={this.handleChange}
+            helperText={this.state.errors.email}
+            error={this.state.errors?.email.length > 0}
+            />
+            </div>
+            <div className="button">
+                <div className="btn1"></div>
+            <div className="btn">
+            <Button
+            variant="contained"
+            color="primary"
+            size="medium"
+            type="submit"
+            className={classes.loginBtnn}
+            >
+            Login
+            </Button>
+            </div>
+            </div>
+       
+       </div>
+       </form>
     </div>
+    
     );
     }
-    }
-    export default withRouter(Forgot);
+}
+//export default withRouter((withStyles(Login)));
+//export default connect()(withRouter(Login))(withStyles(styles)(Login));
+export default withRouter(withStyles(styles)(Login));
+//this export connects the component to the reduxStore as well as allowing us to use the history props

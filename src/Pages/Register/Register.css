@@ -11,12 +11,28 @@
   margin: 100px auto;
  
 } */
+.btn2 {
+  width: 148px;
+  margin-left: 10px;
+}
+.butt {
+  display: inline-flex;
+  font-size: 14px;
+  padding: 45px 0 0;
+  vertical-align: top;
+  white-space: normal;
+  width: 100%;
+}
+.btn3 {
+  margin-left: 130px;
+  color: #4946e6;
+}
 .logo {
   padding: 30px 10px 30px 0px;
   display: flex;
 }
 .trypto {
-  padding: 0px 35px 0px 35px;
+  padding: 10px 35px 0px 35px;
   display: flex;
   color: #202124;
 
@@ -26,7 +42,7 @@
   line-height: 1.3333;
 }
 .text {
-  padding: 0px 25px 0px 25px;
+  padding: 10px 25px 0px 25px;
   display: flex;
 }
 .text-field {

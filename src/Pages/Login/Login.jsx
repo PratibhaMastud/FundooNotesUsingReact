@@ -51,7 +51,7 @@ import { withRouter } from 'react-router-dom';
         this.state = {
 
             fields: {},
-            errors: {email:'' ,password:''}
+            errors: {}
         }
       this.handleChange = this.handleChange.bind(this);
       this.submitLoginForm = this.submitLoginForm.bind(this);
@@ -145,8 +145,8 @@ import { withRouter } from 'react-router-dom';
             value={this.state.fields.email}
             onChange={this.handleChange}
             helperText={this.state.errors.email}
-            error={this.state.errors?.email.length > 0}
-            />
+            error={this.state.errors.email}
+             />
             </div>
             <div className={classes.root}>
             <TextField
@@ -157,6 +157,8 @@ import { withRouter } from 'react-router-dom';
             name="password"
             value={this.state.fields.password}
             onChange={this.handleChange}
+            helperText={this.state.errors.password}
+            error={this.state.errors.password}
             />
             </div>
             <div className={classes.linkPass}>

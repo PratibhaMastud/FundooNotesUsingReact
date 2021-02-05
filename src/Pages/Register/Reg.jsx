@@ -1,9 +1,9 @@
 import React from "react";
-import { Typography, Link, Button } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
 import './Register.css';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Logo from '../../Accets/funlogo.png';
 
 
@@ -41,10 +41,13 @@ import Logo from '../../Accets/funlogo.png';
         marginRight: theme.spacing(1),
         fontWeight: "bold",
         width: '30ch',
+        color: '#1a73e8',
         height: '5ch'
       },
       loginBtn: {
        marginLeft: theme.spacing(20),
+       backgroundColor: '#1a73e8',
+       color: '#fff'
         },
   });
 
@@ -148,8 +151,11 @@ import Logo from '../../Accets/funlogo.png';
         e.preventDefault();
         if (this.validationForm()) {
             let fields = {};
+            fields["firstName"] = "";
+            fields["lastName"] = "";
             fields["email"] = "";
             fields["password"] = "";
+            fields["confirmPassword"] = "";
             this.setState({fields:fields});
             alert("Form submitted");
         }
@@ -172,7 +178,7 @@ import Logo from '../../Accets/funlogo.png';
             </div>
             <div className="text">
             <TextField
-            label="firstName"
+            label="FirstName"
             id="outlined-size-small"
             variant="outlined"
             name="firstName"
@@ -184,7 +190,7 @@ import Logo from '../../Accets/funlogo.png';
             error={this.state.errors.firstName}
             />
             <TextField
-            label="Lastname"
+            label="LastName"
             id="outlined-size-small"
             variant="outlined"
             name="lastName"
@@ -243,14 +249,13 @@ import Logo from '../../Accets/funlogo.png';
            
             <div className="butt">
                 <div className="btn2">
-                <Link variant="body2" className={classes.linkButton}>
+                <Link variant="body2" to="/Login" className={classes.linkButton}>
                 Sign in instead..
                 </Link>
                 </div>
             <div className="btn3">
             <Button
             variant="contained"
-            color="primary"
             size="medium"
             type="submit"
             className={classes.loginBtn}

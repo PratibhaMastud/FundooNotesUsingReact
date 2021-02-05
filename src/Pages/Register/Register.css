@@ -25,7 +25,7 @@
 }
 .btn3 {
   margin-left: 130px;
-  color: #4946e6;
+  color: #1a73e8;
 }
 .logo {
   padding: 30px 10px 30px 0px;
@@ -67,4 +67,19 @@
   font-size: 14px;
   background: #ffffff;
   margin: 100px auto;
+}
+/* @media (min-width: 901px) {
+  .register-form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+  }
+} */
+
+@media (mix-width: 601px) {
+  .register-form .text .text-field {
+    height: unset;
+    width: 50%;
+    background-color: aqua;
+  }
 }

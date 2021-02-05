@@ -37,7 +37,7 @@ import Logoo from '../../Accets/funlogo.png';
         this.state = {
 
             fields: {},
-            errors: {email:'' ,password:''}
+            errors: {}
         }
       this.handleChange = this.handleChange.bind(this);
       this.submitLoginForm = this.submitLoginForm.bind(this);
@@ -82,7 +82,6 @@ import Logoo from '../../Accets/funlogo.png';
         if (this.validationForm()) {
             let fields = {};
             fields["email"] = "";
-            fields["password"] = "";
             this.setState({fields:fields});
             alert("Form submitted");
         }
@@ -119,7 +118,7 @@ import Logoo from '../../Accets/funlogo.png';
             value={this.state.fields.email}
             onChange={this.handleChange}
             helperText={this.state.errors.email}
-            error={this.state.errors?.email.length > 0}
+            error={this.state.errors.email}
             />
             </div>
             <div className="button">
@@ -144,7 +143,4 @@ import Logoo from '../../Accets/funlogo.png';
     );
     }
 }
-//export default withRouter((withStyles(Login)));
-//export default connect()(withRouter(Login))(withStyles(styles)(Login));
 export default withRouter(withStyles(styles)(Login));
-//this export connects the component to the reduxStore as well as allowing us to use the history props

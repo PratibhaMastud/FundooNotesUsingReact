@@ -41,7 +41,7 @@ const CreateNote = (props) => {
     return(
         <>
             <div className="mainnote">
-                <form>
+                <form className="form-Dashboard">
            
                 {
                 expand?

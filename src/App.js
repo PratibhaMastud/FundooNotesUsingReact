@@ -13,6 +13,7 @@ import Board from './Components/Home/Dashboard.jsx';
 import Note from './Components/NoteFiles/Note';
 import CreateNote from './Components/NoteFiles/CreateNote';
 import Reg from './Pages/Register/Reg';
+import Reset from './Pages/Reset/Resett';
 
 const App = () => {
   
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/Dashboard" exact component = {Board}/>
           <Route path="/CreateNote" exact component = {CreateNote} />
           <Route path="/Reg" exact component = {Reg}/>
+          <Route path="/Reset" exact component = {Reset}/>
 
         </Switch>
       </Router>

@@ -1,12 +1,14 @@
 import React from "react";
-import { Typography, Link, Button } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 //import { makeStyles } from '@material-ui/core/styles';
 //import { connect } from 'react-redux';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
 import './Login.css';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 //import axios from 'axios';
+import Logooo from '../../Accets/funlogo.png';
+
 
 //const useStyles = makeStyles((theme) => ({
     const styles = theme => ({  
@@ -27,10 +29,19 @@ import { withRouter } from 'react-router-dom';
         width: '50ch',
         height:'10ch',
       },
+      logLink: {
+        color: "#1a73e8",
+        fontWeight: "bold",
+        textAlign: "left",
+        width: '30ch',
+        marginLeft: theme.spacing(2),
+      },
       linkPass: {
           textAlign: "left",
+          color: "#1a73e8",
           marginLeft: theme.spacing(2),
           fontWeight: "bold",
+            width: '30ch',
       },
       linkButton: {
         textAlign: "left",
@@ -39,8 +50,9 @@ import { withRouter } from 'react-router-dom';
         marginRight: theme.spacing(1),
         fontWeight: "bold",
       },
-      loginBtn: {
-        marginLeft: theme.spacing(22),
+      logBtn: {
+        backgroundColor: '#1a73e8',
+        color: '#fff'
         },
   });
 
@@ -122,7 +134,7 @@ import { withRouter } from 'react-router-dom';
         <form  onSubmit={this.submitLoginForm}>
         <div id="register">
             <div id="logo">
-                <h3>Fundoo</h3>
+            <img src={Logooo} alt="booh" className="img"/>
             </div>
             <div id="sign">
                 <Typography variant="h6" >
@@ -161,24 +173,28 @@ import { withRouter } from 'react-router-dom';
             error={this.state.errors.password}
             />
             </div>
-            <div className={classes.linkPass}>
-            <Link variant="body2">
+            <div className="linkpass">
+            <Link To="/Forgot" className={classes.linkPass}>
                 Forgot Password?
             </Link>
             </div>
-            <div className={classes.linkButton}>
-            <Link variant="body2">
-                Create New account...
-            </Link>
+            
+            <div className="LogDivbutt">
+                <div className="btnn2">
+				<Link To="/Forgot" className={classes.logLink}>
+                Create account
+				</Link>
+                </div>
+            <div className="Logbtn3">
             <Button
             variant="contained"
             size="medium"
-            color="primary"
             type="submit"
-            className={classes.loginBtn}
+            className={classes.logBtn}
             >
-            Login
+            next
             </Button>
+            </div>
             </div>
        </div>
        </form>

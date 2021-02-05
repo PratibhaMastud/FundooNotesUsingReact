@@ -1,4 +1,4 @@
-#forgot {
+#reset {
   width: 420px;
   height: 500px;
   border: 1px solid #d6d7da;
@@ -10,7 +10,7 @@
   background: #ffffff;
   margin: 100px auto;
 }
-#forgot-logo {
+#reset-logo {
   margin-top: 30px;
   display: flex;
   height: 45px;
@@ -20,7 +20,7 @@
   font-style: inherit;
   font-size: x-large;
 }
-.button {
+.buttton {
   display: inline-block;
   font-size: 14px;
   padding: 24px 0 0;
@@ -28,10 +28,10 @@
   white-space: normal;
   width: 100%;
 }
-.btn1 {
+.btnn2 {
   width: 148px;
 }
-.btn {
+.btnn3 {
   display: inline-block;
   font-size: 14px;
   vertical-align: top;
@@ -40,7 +40,7 @@
   margin-left: 70px;
   color: #4946e6;
 }
-#heading {
+#reset-heading {
   color: #202124;
   font-size: 16px;
   font-weight: 400;
@@ -50,34 +50,34 @@
   padding-top: 8px;
 
   /* margin-top: 20px;
-  display: flex;
-  height: 25px;
-  width: 70;
-  justify-content: center;
-  font-family: arial, sans-serif;
-  font-style: inherit;
-  font-size: larger;
-  color: black; */
+    display: flex;
+    height: 25px;
+    width: 70;
+    justify-content: center;
+    font-family: arial, sans-serif;
+    font-style: inherit;
+    font-size: larger;
+    color: black; */
 }
-#signin {
+#reset-in {
   color: #202124;
   padding-bottom: 0;
   padding-top: 16px;
   font-family: arial, sans-serif;
-  font-size: 35px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 800;
   line-height: 1.3333;
   margin-bottom: 0;
   margin-top: 0;
 }
 /*     
-  margin-top: 20px;
-  display: flex;
-  width: 70;
-  font-size: larger;
-  justify-content: center;
-  font-family: arial, sans-serif;
-  color: blue; */
+    margin-top: 20px;
+    display: flex;
+    width: 70;
+    font-size: larger;
+    justify-content: center;
+    font-family: arial, sans-serif;
+    color: blue; */
 
 #textf {
   color: #202124;

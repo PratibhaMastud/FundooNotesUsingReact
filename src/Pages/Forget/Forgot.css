@@ -20,7 +20,16 @@
   font-style: inherit;
   font-size: x-large;
 }
-.button {
+.forgotBtn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-size: 14px;
+  padding: 24px 0 20px 0;
+  width: 100%;
+}
+/* .button {
   display: inline-block;
   font-size: 14px;
   padding: 24px 0 0;
@@ -30,15 +39,18 @@
 }
 .btn1 {
   width: 148px;
-}
-.btn {
+} */
+/* .btn {
   display: inline-block;
   font-size: 14px;
   vertical-align: top;
   white-space: normal;
   width: 100%;
   margin-left: 70px;
-  color: #4946e6;
+} */
+.loginBtnn {
+  /* margin-right: 35px; */
+  color: #1a73e8;
 }
 #heading {
   color: #202124;
@@ -93,4 +105,11 @@
 .errorMsgD {
   color: #cc0000;
   margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  #forgot {
+    width: 50%;
+    background-color: aqua;
+    height: unset;
+  }
 }

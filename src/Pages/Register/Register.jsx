@@ -4,8 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Register.css";
 import { Link, withRouter } from "react-router-dom";
-import Logo from "../../Accets/funlogo.png";
-import axios from "axios";
+import Logo from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 
 const styles = (theme) => ({
@@ -69,6 +68,13 @@ class Register extends React.Component {
       fields,
     });
   }
+
+  handleLogin = () => {
+    this.props.history.push("/login");
+  };
+  handleHome = () => {
+    this.props.history.push("/board");
+  };
 
   validationForm = () => {
     let fields = this.state.fields;
@@ -260,6 +266,7 @@ class Register extends React.Component {
                   variant="body2"
                   to="/Login"
                   className={classes.linkButton}
+                  onClick={this.handleLogin}
                 >
                   Sign in instead..
                 </Link>
@@ -270,6 +277,7 @@ class Register extends React.Component {
                   size="medium"
                   type="submit"
                   className={classes.loginBtn}
+                  onClick={this.handleHome}
                 >
                   next
                 </Button>

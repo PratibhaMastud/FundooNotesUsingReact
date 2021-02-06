@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Resett.css";
 import { withRouter } from "react-router-dom";
-import Loog from "../../Accets/funlogo.png";
+import Loog from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 
 const styles = (theme) => ({
@@ -26,8 +26,16 @@ const styles = (theme) => ({
     marginRight: theme.spacing(1),
     fontWeight: "bold",
   },
-  loginBtnnn: {
-    marginLeft: theme.spacing(22),
+  // loginBtnnn: {
+  //   marginLeft: theme.spacing(22),
+  //   backgroundColor: "#1a73e8",
+  //   ,
+  // },
+  btnstyle: {
+    //marginLeft: theme.spacing(22),
+    backgroundColor: "#1a73e8",
+    color: "#fff",
+    marginRight: theme.spacing(2),
   },
 });
 
@@ -41,7 +49,9 @@ class Resett extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.submitLoginForm = this.submitLoginForm.bind(this);
   }
-
+  handleLogin = () => {
+    this.props.history.push("/login");
+  };
   handleChange(e) {
     let fields = this.state.fields;
     fields[e.target.name] = e.target.value;
@@ -101,6 +111,7 @@ class Resett extends React.Component {
       };
       userServices.reset(userReset).then((response) => {
         console.log(response);
+        this.props.history.push("/login");
         console.log(response.data);
       });
       alert("Form submitted");
@@ -151,19 +162,17 @@ class Resett extends React.Component {
                 error={this.state.errors.password}
               />
             </div>
-            <div className="buttton">
-              <div className="btnn2"></div>
-              <div className="btnn3">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="medium"
-                  type="submit"
-                  className={classes.loginBtnnn}
-                >
-                  Next
-                </Button>
-              </div>
+            <div className="button">
+              {/* <div className="btnn2"></div>
+              <div className="btnn3"> */}
+              <Button
+                variant="contained"
+                size="medium"
+                type="submit"
+                className={classes.btnstyle}
+              >
+                Next
+              </Button>
             </div>
           </div>
         </form>

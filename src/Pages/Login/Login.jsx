@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import "./Login.css";
 import { Link, withRouter } from "react-router-dom";
 //import axios from 'axios';
-import Logooo from "../../Accets/funlogo.png";
+import Logooo from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 
 //const useStyles = makeStyles((theme) => ({
@@ -75,6 +75,13 @@ class Login extends React.Component {
     });
   }
 
+  handleForgot = () => {
+    this.props.history.push("/forgot");
+  };
+  handleRegister = () => {
+    this.props.history.push("/register");
+  };
+
   validationForm = () => {
     let fields = this.state.fields;
     let errors = {};
@@ -124,10 +131,16 @@ class Login extends React.Component {
         email: this.state.fields.email,
         password: this.state.fields.password,
       };
-      userServices.login(userLogin).then((response) => {
-        console.log(response);
-        console.log(response.data);
-      });
+      userServices
+        .login(userLogin)
+        .then((response) => {
+          console.log(response);
+          this.props.history.push("/board");
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       alert("Form submitted");
     }
   };
@@ -175,14 +188,14 @@ class Login extends React.Component {
               />
             </div>
             <div className="linkpass">
-              <Link To="/Forgot" className={classes.linkPass}>
+              <Link className={classes.linkPass} onClick={this.handleForgot}>
                 Forgot Password?
               </Link>
             </div>
 
             <div className="LogDivbutt">
               <div className="btnn2">
-                <Link To="/Forgot" className={classes.logLink}>
+                <Link className={classes.logLink} onClick={this.handleRegister}>
                   Create account
                 </Link>
               </div>
@@ -192,6 +205,7 @@ class Login extends React.Component {
                   size="medium"
                   type="submit"
                   className={classes.logBtn}
+                  //onClick={this.handleLogin}
                 >
                   next
                 </Button>

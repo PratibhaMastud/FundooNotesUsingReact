@@ -76,10 +76,10 @@
   }
 } */
 
-@media (mix-width: 601px) {
-  .register-form .text .text-field {
+@media (max-width: 550px) {
+  .register-form {
     height: unset;
-    width: 50%;
+    width: 60%;
     background-color: aqua;
   }
 }

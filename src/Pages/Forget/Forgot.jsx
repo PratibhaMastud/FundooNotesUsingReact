@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Forgot.css";
 import { withRouter } from "react-router-dom";
-import Logoo from "../../Accets/funlogo.png";
+import Logoo from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 const styles = (theme) => ({
   roott: {
@@ -26,7 +26,10 @@ const styles = (theme) => ({
     fontWeight: "bold",
   },
   loginBtnn: {
-    marginLeft: theme.spacing(22),
+    //marginLeft: theme.spacing(22),
+    backgroundColor: "#1a73e8",
+    marginRight: theme.spacing(2),
+    color: "#fff",
   },
 });
 
@@ -83,6 +86,7 @@ class Login extends React.Component {
       };
       userServices.forgot(userForgot).then((response) => {
         console.log(response);
+        this.props.history.push("/reset");
         console.log(response.data);
       });
       alert("Form submitted");
@@ -120,19 +124,17 @@ class Login extends React.Component {
                 error={this.state.errors.email}
               />
             </div>
-            <div className="button">
-              <div className="btn1"></div>
-              <div className="btn">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="medium"
-                  type="submit"
-                  className={classes.loginBtnn}
-                >
-                  Login
-                </Button>
-              </div>
+            <div className="forgotBtn">
+              {/* <div className="btn1"></div>
+              <div className="btn"> */}
+              <Button
+                variant="contained"
+                size="medium"
+                type="submit"
+                className={classes.loginBtnn}
+              >
+                next
+              </Button>
             </div>
           </div>
         </form>

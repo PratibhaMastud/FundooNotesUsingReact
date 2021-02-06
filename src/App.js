@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/forgot" exact component = {forgotPage}/>
           <Route path="/note" exact component = {note}/>
           <Route path="/drawer" exact component = {drawer}/>
-          <Route path="/board" exact component = {board}/>
+          <Route path="/dashboard" exact component = {board}/>
           <Route path="/createNote" exact component = {createNote} />
           <Route path="/register" exact component = {register}/>
           <Route path="/reset" exact component = {reset}/>

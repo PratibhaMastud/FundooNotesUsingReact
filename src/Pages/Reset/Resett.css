@@ -20,7 +20,7 @@
   font-style: inherit;
   font-size: x-large;
 }
-.buttton {
+/* .buttton {
   display: inline-block;
   font-size: 14px;
   padding: 24px 0 0;
@@ -39,6 +39,15 @@
   width: 100%;
   margin-left: 70px;
   color: #4946e6;
+} */
+.button {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-size: 14px;
+  padding: 24px 0 20px 0;
+  width: 100%;
 }
 #reset-heading {
   color: #202124;
@@ -93,4 +102,11 @@
 .errorMsgD {
   color: #cc0000;
   margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  #reset {
+    width: 50%;
+    background-color: aqua;
+    height: unset;
+  }
 }

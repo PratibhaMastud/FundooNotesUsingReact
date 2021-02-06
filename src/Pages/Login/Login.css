@@ -54,6 +54,9 @@ h3 {
   align-items: flex-start;
   margin-top: 0px;
 }
+.login-btn {
+  
+}
 .btnn2 {
   display: flex;
   justify-content: start;
@@ -86,7 +89,7 @@ h3 {
   font-size: larger;
   justify-content: center;
   font-family: arial, sans-serif;
-  color: blue;
+  color: #1a73e8;
 }
 #textfield {
   color: #202124;

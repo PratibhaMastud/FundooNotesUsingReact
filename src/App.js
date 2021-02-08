@@ -13,6 +13,7 @@ import note from './Components/NoteFiles/Note';
 import createNote from './Components/NoteFiles/CreateNote';
 import register from './Pages/Register/Register';
 import reset from './Pages/Reset/Resett';
+import appbar from './Components/Appbar/Appbar';
 
 const App = () => {
   
@@ -20,6 +21,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Switch>
+        <Route path="/" exact component = {login}/>
           <Route path="/login" exact component = {login}/>
           <Route path="/forgot" exact component = {forgotPage}/>
           <Route path="/note" exact component = {note}/>
@@ -28,9 +30,12 @@ const App = () => {
           <Route path="/createNote" exact component = {createNote} />
           <Route path="/register" exact component = {register}/>
           <Route path="/reset" exact component = {reset}/>
+          <Route path="/appbar" exact component = {appbar}/>
+          
         </Switch>
       </Router>
     </div>
+    
   );
 }
 

@@ -3,7 +3,7 @@ import { Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Forgot.css";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Logoo from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 const styles = (theme) => ({
@@ -31,6 +31,13 @@ const styles = (theme) => ({
     marginRight: theme.spacing(2),
     color: "#fff",
   },
+  logLik: {
+    color: "#1a73e8",
+    fontWeight: "bold",
+    textAlign: "left",
+    width: "30ch",
+    marginLeft: theme.spacing(2),
+  },
 });
 
 class Login extends React.Component {
@@ -50,6 +57,8 @@ class Login extends React.Component {
     this.setState({
       fields,
     });
+    if (this.validationForm()) {
+    }
   }
 
   validationForm = () => {
@@ -86,10 +95,9 @@ class Login extends React.Component {
       };
       userServices.forgot(userForgot).then((response) => {
         console.log(response);
-        this.props.history.push("/reset");
+        this.props.history.push("/login");
         console.log(response.data);
       });
-      alert("Form submitted");
     }
   };
 
@@ -124,17 +132,22 @@ class Login extends React.Component {
                 error={this.state.errors.email}
               />
             </div>
-            <div className="forgotBtn">
-              {/* <div className="btn1"></div>
-              <div className="btn"> */}
-              <Button
-                variant="contained"
-                size="medium"
-                type="submit"
-                className={classes.loginBtnn}
-              >
-                next
-              </Button>
+            <div className="forgot-btn">
+              <div className="forgot-btnn">
+                <Link className={classes.logLik} to="/login">
+                  Login instead..
+                </Link>
+              </div>
+              <div className="Logbtn1">
+                <Button
+                  variant="contained"
+                  size="medium"
+                  type="submit"
+                  className={classes.loginBtnn}
+                >
+                  next
+                </Button>
+              </div>
             </div>
           </div>
         </form>

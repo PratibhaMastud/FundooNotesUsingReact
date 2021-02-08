@@ -29,25 +29,28 @@
   padding: 24px 0 20px 0;
   width: 100%;
 }
-/* .button {
-  display: inline-block;
+.forgot-btn {
+  display: flex;
   font-size: 14px;
-  padding: 24px 0 0;
+  padding: 45px 0 0;
   vertical-align: top;
   white-space: normal;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: self-end;
+  display: inline-flex;
 }
-.btn1 {
-  width: 148px;
-} */
-/* .btn {
-  display: inline-block;
-  font-size: 14px;
-  vertical-align: top;
-  white-space: normal;
-  width: 100%;
-  margin-left: 70px;
-} */
+.Logbtn1 {
+  margin-bottom: 10%;
+}
+.forgot-btnn {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  margin-top: 0px;
+}
+
 .loginBtnn {
   /* margin-right: 35px; */
   color: #1a73e8;

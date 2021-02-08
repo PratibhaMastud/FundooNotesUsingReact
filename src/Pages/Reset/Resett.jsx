@@ -58,6 +58,8 @@ class Resett extends React.Component {
     this.setState({
       fields,
     });
+    if (this.validationForm()) {
+    }
   }
 
   validationForm = () => {
@@ -114,7 +116,6 @@ class Resett extends React.Component {
         this.props.history.push("/login");
         console.log(response.data);
       });
-      alert("Form submitted");
     }
   };
 
@@ -163,8 +164,6 @@ class Resett extends React.Component {
               />
             </div>
             <div className="button">
-              {/* <div className="btnn2"></div>
-              <div className="btnn3"> */}
               <Button
                 variant="contained"
                 size="medium"

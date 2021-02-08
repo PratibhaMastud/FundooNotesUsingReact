@@ -73,14 +73,9 @@ class Login extends React.Component {
     this.setState({
       fields,
     });
+    if (this.validationForm()) {
+    }
   }
-
-  handleForgot = () => {
-    this.props.history.push("/forgot");
-  };
-  handleRegister = () => {
-    this.props.history.push("/register");
-  };
 
   validationForm = () => {
     let fields = this.state.fields;
@@ -135,7 +130,7 @@ class Login extends React.Component {
         .login(userLogin)
         .then((response) => {
           console.log(response);
-          this.props.history.push("/board");
+          this.props.history.push("/dashboard");
           console.log(response.data);
         })
         .catch((error) => {
@@ -188,14 +183,14 @@ class Login extends React.Component {
               />
             </div>
             <div className="linkpass">
-              <Link className={classes.linkPass} onClick={this.handleForgot}>
+              <Link className={classes.linkPass} to="/forgot">
                 Forgot Password?
               </Link>
             </div>
 
             <div className="LogDivbutt">
               <div className="btnn2">
-                <Link className={classes.logLink} onClick={this.handleRegister}>
+                <Link className={classes.logLink} to="/register">
                   Create account
                 </Link>
               </div>
@@ -205,7 +200,6 @@ class Login extends React.Component {
                   size="medium"
                   type="submit"
                   className={classes.logBtn}
-                  //onClick={this.handleLogin}
                 >
                   next
                 </Button>

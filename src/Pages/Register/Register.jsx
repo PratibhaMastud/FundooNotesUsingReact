@@ -67,14 +67,9 @@ class Register extends React.Component {
     this.setState({
       fields,
     });
+    if (this.validationForm()) {
+    }
   }
-
-  handleLogin = () => {
-    this.props.history.push("/login");
-  };
-  handleHome = () => {
-    this.props.history.push("/board");
-  };
 
   validationForm = () => {
     let fields = this.state.fields;
@@ -169,11 +164,11 @@ class Register extends React.Component {
         password: this.state.fields.password,
         service: "advance",
       };
+      this.props.history.push("/dashboard");
       userServices.register(userData).then((response) => {
         console.log(response);
         console.log(response.data);
       });
-      alert("Form submitted");
     }
   };
 
@@ -264,9 +259,9 @@ class Register extends React.Component {
               <div className="btn2">
                 <Link
                   variant="body2"
-                  to="/Login"
+                  to="/login"
                   className={classes.linkButton}
-                  onClick={this.handleLogin}
+                  //onClick={this.handleLogin}
                 >
                   Sign in instead..
                 </Link>
@@ -277,7 +272,6 @@ class Register extends React.Component {
                   size="medium"
                   type="submit"
                   className={classes.loginBtn}
-                  onClick={this.handleHome}
                 >
                   next
                 </Button>

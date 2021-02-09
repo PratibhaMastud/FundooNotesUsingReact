@@ -67,8 +67,8 @@ class Register extends React.Component {
     this.setState({
       fields,
     });
-    if (this.validationForm()) {
-    }
+    // if (this.validationForm(fields.state)) {
+    // }
   }
 
   validationForm = () => {

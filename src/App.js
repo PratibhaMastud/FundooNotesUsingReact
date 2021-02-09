@@ -14,7 +14,6 @@ import createNote from './Components/NoteFiles/CreateNote';
 import register from './Pages/Register/Register';
 import reset from './Pages/Reset/Resett';
 import appbar from './Components/Appbar/Appbar';
-
 const App = () => {
   
   return (
@@ -29,7 +28,7 @@ const App = () => {
           <Route path="/dashboard" exact component = {board}/>
           <Route path="/createNote" exact component = {createNote} />
           <Route path="/register" exact component = {register}/>
-          <Route path="/reset" exact component = {reset}/>
+          <Route path="/resetpassword/:token" exact component = {reset}/>
           <Route path="/appbar" exact component = {appbar}/>
           
         </Switch>
@@ -38,5 +37,6 @@ const App = () => {
     
   );
 }
+
 
 export default App;

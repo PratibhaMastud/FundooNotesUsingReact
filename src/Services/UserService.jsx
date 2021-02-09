@@ -16,8 +16,12 @@ const forgot = (data) => {
   return http.post("/user/reset", data);
 };
 
-const reset = (data) => {
-  return http.post("/user/reset", data);
+const reset = (data, token) => {
+  return http.post("/user/reset-password/", data, {
+    headers: {
+      Authorization: `${token}`,
+    },
+  });
 };
 
 // export default UserService;

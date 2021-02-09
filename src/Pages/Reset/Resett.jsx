@@ -3,7 +3,7 @@ import { Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Resett.css";
-import { withRouter } from "react-router-dom";
+import { withRouter, useParams } from "react-router-dom";
 import Loog from "../../Accets/fundologo.png";
 import userServices from "../../Services/UserService";
 
@@ -49,17 +49,13 @@ class Resett extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.submitLoginForm = this.submitLoginForm.bind(this);
   }
-  handleLogin = () => {
-    this.props.history.push("/login");
-  };
+
   handleChange(e) {
     let fields = this.state.fields;
     fields[e.target.name] = e.target.value;
     this.setState({
       fields,
     });
-    if (this.validationForm()) {
-    }
   }
 
   validationForm = () => {
@@ -67,34 +63,19 @@ class Resett extends React.Component {
     let errors = {};
     let formIsValid = true;
 
-    if (!fields["email"]) {
+    if (!fields["newPassword"]) {
       formIsValid = false;
-      errors["email"] = "*Please enter your email-ID.";
+      errors["newPassword"] = "*Please enter your password.";
     }
 
-    if (typeof fields["email"] !== "undefined") {
-      var pattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      );
-      if (!pattern.test(fields["email"])) {
-        formIsValid = false;
-        errors["email"] = "*Please enter valid email-ID.";
-      }
-    }
-
-    if (!fields["password"]) {
-      formIsValid = false;
-      errors["password"] = "*Please enter your password.";
-    }
-
-    if (typeof fields["password"] !== "undefined") {
+    if (typeof fields["newPassword"] !== "undefined") {
       if (
-        !fields["password"].match(
+        !fields["newPassword"].match(
           /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/
         )
       ) {
         formIsValid = false;
-        errors["password"] = "* Please enter secure password.";
+        errors["newPassword"] = "* Please enter secure password.";
       }
     }
 
@@ -104,17 +85,26 @@ class Resett extends React.Component {
     return formIsValid;
   };
 
+  // componentDidMount() {
+  //   const { token } = this.props.match.params;
+  //   console.log(token);
+  //   return token;
+  // }
   submitLoginForm = (e) => {
     e.preventDefault();
     if (this.validationForm()) {
       let userReset = {
-        email: this.state.fields.email,
-        password: this.state.fields.password,
+        //email: this.state.fields.email,
+        newPassword: this.state.fields.newPassword,
       };
-      userServices.reset(userReset).then((response) => {
+      const token = this.props.match.params.token;
+      console.log(token);
+      userServices.reset(userReset, token).then((response) => {
         console.log(response);
-        this.props.history.push("/login");
+        //console.log(token);
+        console.log(this.props);
         console.log(response.data);
+        this.props.history.push("/login");
       });
     }
   };
@@ -137,7 +127,7 @@ class Resett extends React.Component {
               </Typography>
             </div>
 
-            <div className={classes.roottt}>
+            {/* <div className={classes.roottt}>
               <TextField
                 label="Username"
                 id="outlined-basic"
@@ -149,18 +139,18 @@ class Resett extends React.Component {
                 helperText={this.state.errors.email}
                 error={this.state.errors.email}
               />
-            </div>
+            </div> */}
             <div className={classes.roottt}>
               <TextField
                 label="password"
                 id="outlined-basic"
                 className={classes.textFieldss}
                 variant="outlined"
-                name="password"
-                value={this.state.fields.password}
+                name="newPassword"
+                value={this.state.fields.newPassword}
                 onChange={this.handleChange}
-                helperText={this.state.errors.password}
-                error={this.state.errors.password}
+                helperText={this.state.errors.newPassword}
+                error={this.state.errors.newPassword}
               />
             </div>
             <div className="button">

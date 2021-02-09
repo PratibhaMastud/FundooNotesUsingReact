@@ -73,8 +73,8 @@ class Login extends React.Component {
     this.setState({
       fields,
     });
-    if (this.validationForm()) {
-    }
+    // if (this.validationForm()) {
+    // }
   }
 
   validationForm = () => {
@@ -136,7 +136,6 @@ class Login extends React.Component {
         .catch((error) => {
           console.log(error);
         });
-      alert("Form submitted");
     }
   };
 

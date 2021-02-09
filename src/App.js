@@ -14,6 +14,8 @@ import createNote from './Components/NoteFiles/CreateNote';
 import register from './Pages/Register/Register';
 import reset from './Pages/Reset/Resett';
 import appbar from './Components/Appbar/Appbar';
+import PrivateRoute from './authguard/PrivateRoute';
+
 const App = () => {
   
   return (
@@ -25,12 +27,11 @@ const App = () => {
           <Route path="/forgot" exact component = {forgotPage}/>
           <Route path="/note" exact component = {note}/>
           <Route path="/drawer" exact component = {drawer}/>
-          <Route path="/dashboard" exact component = {board}/>
           <Route path="/createNote" exact component = {createNote} />
           <Route path="/register" exact component = {register}/>
           <Route path="/resetpassword/:token" exact component = {reset}/>
           <Route path="/appbar" exact component = {appbar}/>
-          
+          <PrivateRoute path="/dashboard" component={board} exact />
         </Switch>
       </Router>
     </div>

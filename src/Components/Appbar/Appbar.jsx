@@ -14,24 +14,19 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import EditIcon from "@material-ui/icons/Edit";
-import MailIcon from "@material-ui/icons/Mail";
 import { withRouter } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
-import Badge from "@material-ui/core/Badge";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import RefreshIcon from "@material-ui/icons/Refresh";
 import ViewStreamIcon from "@material-ui/icons/ViewStream";
-import SettingsIcon from "@material-ui/icons/Settings";
 import AppsIcon from "@material-ui/icons/Apps";
 import Avatar from "@material-ui/core/Avatar";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ArchiveIcon from "@material-ui/icons/Archive";
 import NoteIcon from "@material-ui/icons/Note";
@@ -208,10 +203,8 @@ function Appbar() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
+      //className={classes.profile}
+    ></Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -233,9 +226,9 @@ function Appbar() {
       </MenuItem>
       <MenuItem>
         <IconButton color="inherit">
-          <AppsIcon />
+          <ExitToAppIcon />
         </IconButton>
-        <p>Apps</p>
+        <p>logout</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -294,22 +287,10 @@ function Appbar() {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <RefreshIcon />
-              </IconButton>
               <IconButton>
                 <ViewStreamIcon />
               </IconButton>
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <SettingsIcon />
-              </IconButton>
+
               <IconButton
                 edge="end"
                 aria-label="account of current user"
@@ -321,6 +302,7 @@ function Appbar() {
                 <AccountCircle />
               </IconButton>
             </div>
+
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"
@@ -331,6 +313,9 @@ function Appbar() {
               >
                 <MoreIcon />
               </IconButton>
+              {/* <div>
+                <Button onClick={() => this.props.clickLogout()}>Logout</Button>
+              </div> */}
             </div>
           </Toolbar>
         </AppBar>
